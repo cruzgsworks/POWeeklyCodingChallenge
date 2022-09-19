@@ -1,35 +1,34 @@
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
-	
+
 	/*
 	 * PO Weekly Coding Coding Challenge 9/19/2022 - 9/23/2022
 	 */
-
-	public static String secondMaximum(int N, String[] S) {
+	
+	public static String sumDigits(int N, String[] A) {
 		String result = "";
-
-		// Logic goes here
-		for (int i = 0; i < N; i++) {
-			String[] splitArr = S[i].split(" ");
-			int[] numArr = new int[splitArr.length];
-			for (int j = 0; j < splitArr.length; j++) {
-				numArr[j] = Integer.parseInt(splitArr[j]);
+		
+		// Logic here
+		for(int i = 0; i < N; i++) {
+			int testCaseSum = 0;
+			for(int j = 0; j < A[i].length(); j++) {
+				if(Character.isDigit(A[i].charAt(j))) {
+					testCaseSum += Character.getNumericValue(A[i].charAt(j));
+				}
 			}
-			Arrays.sort(numArr);
-			result += numArr[1];
+			result += testCaseSum;
 			if(i != (N - 1)) {
 				result += "\n";
 			}
 		}
-
+		
 		return result;
 	}
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-
+		
 		// Input
 		String tempStr = "";
 		String[] S = {};
@@ -47,7 +46,8 @@ public class Main {
 		// System.out.println(Arrays.toString(S));
 
 		// Output
-		System.out.print(secondMaximum(N, S));
+		System.out.print(sumDigits(N, S));
+
 	}
 
 }
